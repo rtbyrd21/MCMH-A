@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>A</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="scripts/magnifier.js"></script>
+
+<script src="scripts/angular.js"></script>
+<script src="scripts/ui-router.js"></script>
+<script src="scripts/app.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/cloudzoom.css">
+<script src="scripts/event.js"></script>
+<script src="scripts/cloudzoom.js"></script>
+<script src="scripts/panzoom.js"></script>
+<script src="scripts/p5.min.js"></script>
+<script src="scripts/sketch.js"></script>
+<script type="text/javascript">
+var evt = new Event(),
+    m = new Magnifier(evt);
+    n = new Magnifier(evt);
+</script>
+<script src="scripts/juxtapose.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+<link rel="stylesheet" type="text/css" href="styles/magnifier.css">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body ng-app="myApp">
+
+
+<div ng-controller="MainController">
+
+
+<div class="container">
+        <div class="navigation" ng-if="showNav">
+            <a ui-sref="home">Home</a><a ui-sref="tiles" ng-if="countySelected">County Selection</a>
+            <button id='zoom-in' disabled-zoom="in" ng-if="countySelected">Zoom In</button>
+            <button id='zoom-out' disabled-zoom="out" ng-if="countySelected">Zoom Out</button>
+            &nbsp; <span ng-if="countySelected">{{zoomAmount * 100 | number:0}}%</span>
+        </div>
+    <div ui-view>
+    </div>
+</div>
+
+
+</div>
+<!-- <div id="foo"></div> -->
+
+<div ng-controller="SketchController"></div>
+
+</body>
+</html>
